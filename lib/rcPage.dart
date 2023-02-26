@@ -4,6 +4,7 @@ import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:fyp_v1/variables.dart';
 import 'package:fyp_v1/rcdescription.dart';
 
+
 class rcPage extends StatelessWidget {
   final variables = Variables();
 
