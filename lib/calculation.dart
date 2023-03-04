@@ -6,8 +6,12 @@ import 'package:fyp_v1/rcBothinput.dart';
 import 'package:fyp_v1/rcPage.dart';
 import 'package:fyp_v1/rcswr.dart';
 import 'package:fyp_v1/rczPage.dart';
+import 'package:fyp_v1/rczPage2.dart';
+import 'package:fyp_v1/rczPageBoth.dart';
 import 'package:fyp_v1/variables.dart';
 import 'package:fyp_v1/zInPage.dart';
+import 'package:fyp_v1/zInPageBoth.dart';
+import 'package:fyp_v1/zInPageusingSWR.dart';
 
 class calculation extends StatefulWidget {
   @override
@@ -34,10 +38,7 @@ class _calculationState extends State<calculation> {
           child: Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 10.0, top: 10.0),
             child: Container(
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width,
+              width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
                   Row(
@@ -230,6 +231,7 @@ class _calculationState extends State<calculation> {
                                 setState(() {
                                   _rcDisplay(variables.swr.text);
                                   _rczDisplay(variables.swr.text);
+                                  _zInDisplay(variables.swr.text);
                                 });
                               },
                             ),
@@ -255,6 +257,7 @@ class _calculationState extends State<calculation> {
                               setState(() {
                                 _rcDisplay(variables.thetaRoo.text);
                                 _rczDisplay(variables.thetaRoo.text);
+                                _zInDisplay(variables.thetaRoo.text);
                               });
                             },
                           ),
@@ -281,6 +284,8 @@ class _calculationState extends State<calculation> {
                                 setState(() {
                                   _rcDisplay(variables.thetaRcc.text);
                                   _rczDisplay(variables.thetaRcc.text);
+                                  _zInDisplay(variables.thetaRcc.text);
+
                                 });
                               },
                             ),
@@ -426,7 +431,7 @@ class _calculationState extends State<calculation> {
                           _validateRczInput1(variables.thetaRoo.text);
                     },
                     child: Math.tex(
-                      "${r'\Gamma_L='}${variables.rcAtz1.re.toStringAsFixed(3)}+${variables.rcAtz1.im.toStringAsFixed(3)}j ", textStyle: TextStyle(fontSize: 30, color: Colors.white,),),
+                      "${r'\Gamma_L(Z)='}${variables.rcAtz1.re.toStringAsFixed(3)}+${variables.rcAtz1.im.toStringAsFixed(3)}j ", textStyle: TextStyle(fontSize: 30, color: Colors.white,),),
                   ),
 
                   //zin
@@ -443,10 +448,13 @@ class _calculationState extends State<calculation> {
                           _validatezInInput1(variables.reZo.text) &&
                           _validatezInInput1(variables.imZo.text) &&
                           _validatezInInput1(variables.betaa.text) &&
-                          _validatezInInput1(variables.zPos.text);
+                          _validatezInInput1(variables.zPos.text) &&
+                          _validatezInInput1(variables.thetaRoo.text) &&
+                          _validatezInInput1(variables.thetaRcc.text) &&
+                          _validatezInInput1(variables.swr.text) ;
                     },
                     child: Math.tex(
-                      "${r'Z_{in}='}${variables.zIn1.re.toStringAsFixed(3)}+${variables.zIn1.im.toStringAsFixed(3)}j ",
+                      "${r'Z_{in}='}${variables.zInusingRcz1.re.toStringAsFixed(3)}+${variables.zInusingRcz1.im.toStringAsFixed(3)}j ",
                       textStyle: TextStyle(
                         fontSize: 30, color: Colors.white,),),
                   ),
@@ -672,7 +680,9 @@ class _calculationState extends State<calculation> {
 
   //calculate zin
   _validatezInInput1(String input) {
-    if (variables.reZL.text != "" && variables.imZL.text != "" && variables.reZo.text != "" && variables.imZo.text != "" && variables.betaa.text != "" && variables.zPos.text != "") {
+    if (variables.reZL.text != "" && variables.imZL.text != "" && variables.reZo.text != "" && variables.imZo.text != "" && variables.betaa.text != "" && variables.zPos.text != "" && variables.swr.text != "" &&
+        variables.thetaRcc.text != "" && variables.thetaRoo.text != "")
+    {
       setState(() {
         variables.realZL = double.parse(variables.reZL.text);
         variables.imaginaryZL = double.parse(variables.imZL.text);
@@ -680,18 +690,86 @@ class _calculationState extends State<calculation> {
         variables.imaginaryZo = double.parse(variables.imZo.text);
         variables.beta = double.parse(variables.betaa.text);
         variables.zPosition = double.parse(variables.zPos.text);
-        final tanbetaz = tan(variables.beta * variables.zPosition);
+        final tanbetaz = tan(variables.beta * -variables.zPosition);
         final j = Complex(re: 0, im: 1);
         final zlvalue = Complex(re: variables.realZL, im: variables.imaginaryZL);
         final zovalue = Complex(re: variables.realZo, im: variables.imaginaryZo);
-        final zIntop = ((zlvalue + (zovalue * j * -tanbetaz)));
-        final zInbtm = (zovalue + (zlvalue * j * -tanbetaz));
+        final zIntop = (zlvalue + (zovalue * j *(tanbetaz)));
+        final zInbtm = (zovalue + (zlvalue * j * (tanbetaz)));
         final zIn = (zIntop / zInbtm) * (zovalue);
+        variables.tanbetaz1 = tanbetaz;
         variables.zlvalue1 = zlvalue;
         variables.zovalue1 = zovalue;
         variables.zIntop1 = zIntop;
         variables.zInbtm1 = zInbtm;
         variables.zIn1 = zIn;
+        final rctop = ((zlvalue) - (zovalue));
+        final rcbtm = ((zlvalue) + (zovalue));
+        final rcvalue = rctop / rcbtm;
+        variables.rcvalue1 = rcvalue;
+        variables.rctop1 = rctop;
+        variables.rcbtm1 = rcbtm;
+        final j2betaZpos = Complex(re: cos(2 * variables.zPosition * variables.beta), im: sin(2 * variables.zPosition * variables.beta));
+        final rcAtz = variables.rcvalue1 * Complex(re: cos(2 * variables.zPosition * variables.beta), im: sin(2 * variables.zPosition * variables.beta));
+        variables.j2betaZpos1 = j2betaZpos;
+        variables.rcAtz1 = rcAtz;
+        final zInusingRczTop = Complex(re:1 , im:0)+variables.rcAtz1;
+        final zInusingRczBtm = Complex(re:1 , im:0) - variables.rcAtz1;
+        variables.zInusingRczTop1 = zInusingRczTop;
+        variables.zInusingRczBtm1 = zInusingRczBtm;
+        final zInusingRcz = ((variables.zInusingRczTop1)/(variables.zInusingRczBtm1)) * (variables.zovalue1);
+        variables.zInusingRcz1 = zInusingRcz;
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) =>
+                zInPageBoth(j: variables.j,
+                    realZL: variables.realZL, imaginaryZL: variables.imaginaryZL, realZo: variables.realZo,
+                    imaginaryZo: variables.imaginaryZo, zlvalue: variables.zlvalue, zovalue: variables.zovalue,
+                    zlvalue1: variables.zlvalue1, zovalue1: variables.zovalue1, rctop: variables.rctop,
+                    rcbtm: variables.rcbtm, rctop1: variables.rctop1, rcbtm1: variables.rcbtm1,
+                    beta: variables.beta, zPosition: variables.zPosition, zIn: variables.zIn, zIntop: variables.zIntop,
+                    zInbtm: variables.zInbtm, zIntop1: variables.zIntop1, zInbtm1: variables.zInbtm1,
+                    zIn1: variables.zIn1, tanbetaz: variables.tanbetaz , tanbetaz1 : variables.tanbetaz1),),);
+      });
+    }
+
+    else if (variables.reZL.text != "" && variables.imZL.text != "" && variables.reZo.text != "" && variables.imZo.text != "" && variables.betaa.text != "" && variables.zPos.text != "") {
+      setState(() {
+        variables.realZL = double.parse(variables.reZL.text);
+        variables.imaginaryZL = double.parse(variables.imZL.text);
+        variables.realZo = double.parse(variables.reZo.text);
+        variables.imaginaryZo = double.parse(variables.imZo.text);
+        variables.beta = double.parse(variables.betaa.text);
+        variables.zPosition = double.parse(variables.zPos.text);
+        final tanbetaz = tan(variables.beta * -variables.zPosition);
+        final j = Complex(re: 0, im: 1);
+        final zlvalue = Complex(re: variables.realZL, im: variables.imaginaryZL);
+        final zovalue = Complex(re: variables.realZo, im: variables.imaginaryZo);
+        final zIntop = (zlvalue + (zovalue * j *(tanbetaz)));
+        final zInbtm = (zovalue + (zlvalue * j * (tanbetaz)));
+        final zIn = (zIntop / zInbtm) * (zovalue);
+        variables.tanbetaz1 = tanbetaz;
+        variables.zlvalue1 = zlvalue;
+        variables.zovalue1 = zovalue;
+        variables.zIntop1 = zIntop;
+        variables.zInbtm1 = zInbtm;
+        variables.zIn1 = zIn;
+        final rctop = ((zlvalue) - (zovalue));
+        final rcbtm = ((zlvalue) + (zovalue));
+        final rcvalue = rctop / rcbtm;
+        variables.rcvalue1 = rcvalue;
+        variables.rctop1 = rctop;
+        variables.rcbtm1 = rcbtm;
+        final j2betaZpos = Complex(re: cos(2 * variables.zPosition * variables.beta), im: sin(2 * variables.zPosition * variables.beta));
+        final rcAtz = variables.rcvalue1 * Complex(re: cos(2 * variables.zPosition * variables.beta), im: sin(2 * variables.zPosition * variables.beta));
+        variables.j2betaZpos1 = j2betaZpos;
+        variables.rcAtz1 = rcAtz;
+        final zInusingRczTop = Complex(re:1 , im:0)+variables.rcAtz1;
+        final zInusingRczBtm = Complex(re:1 , im:0) - variables.rcAtz1;
+        variables.zInusingRczTop1 = zInusingRczTop;
+        variables.zInusingRczBtm1 = zInusingRczBtm;
+        final zInusingRcz = ((variables.zInusingRczTop1)/(variables.zInusingRczBtm1)) * (variables.zovalue1);
+        variables.zInusingRcz1 = zInusingRcz;
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) =>
@@ -702,11 +780,66 @@ class _calculationState extends State<calculation> {
                     rcbtm: variables.rcbtm, rctop1: variables.rctop1, rcbtm1: variables.rcbtm1,
                     beta: variables.beta, zPosition: variables.zPosition, zIn: variables.zIn, zIntop: variables.zIntop,
                     zInbtm: variables.zInbtm, zIntop1: variables.zIntop1, zInbtm1: variables.zInbtm1,
-                    zIn1: variables.zIn1, tanbetaz: variables.tanbetaz),),);
+                    zIn1: variables.zIn1, tanbetaz: variables.tanbetaz , tanbetaz1 : variables.tanbetaz1),),);
       });
     }
+    else if (variables.reZo.text != "" && variables.imZo.text != ""&& variables.betaa.text != "" && variables.zPos.text != "" && variables.swr.text != "" && variables.thetaRcc.text != "" && variables.thetaRoo.text != ""  ) {
+      setState(() {
+        variables.realZo = double.parse(variables.reZo.text);
+        variables.imaginaryZo = double.parse(variables.imZo.text);
+        variables.beta = double.parse(variables.betaa.text);
+        variables.zPosition = double.parse(variables.zPos.text);
+        variables.SWR = double.parse(variables.swr.text);
+        variables.thetaRc = double.parse(variables.thetaRcc.text);
+        variables.thetaRo = double.parse(variables.thetaRoo.text);
+        final zovalue = Complex(re: variables.realZo, im: variables.imaginaryZo);
+        variables.zovalue1 = zovalue;
+        final swrValue = ((variables.SWR - 1) / (1 + variables.SWR));
+        final thetaRo1 = variables.thetaRc - 2 * variables.beta * variables.zPosition;
+        final rcUsingSwr = Complex(re: swrValue * cos(thetaRo1), im: swrValue * sin(thetaRo1));
+        variables.rcUsingSwr1 = rcUsingSwr;
+        variables.rcvalue1 = variables.rcUsingSwr1;
+        variables.swrValue1 = swrValue;
+        variables.thetaRo2 = thetaRo1;
+        final j2betaZpos = Complex(re: cos(2 * variables.zPosition * variables.beta), im: sin(2 * variables.zPosition * variables.beta));
+        final rcAtz = variables.rcvalue1 * Complex(re: cos(2 * variables.zPosition * variables.beta), im: sin(2 * variables.zPosition * variables.beta));
+        variables.j2betaZpos1 = j2betaZpos;
+        variables.rcAtz1 = rcAtz;
+        final zInusingRczTop = Complex(re:1 , im:0)+variables.rcAtz1;
+        final zInusingRczBtm = Complex(re:1 , im:0) - variables.rcAtz1;
+        variables.zInusingRczTop1 = zInusingRczTop;
+        variables.zInusingRczBtm1 = zInusingRczBtm;
+        final zInusingRcz = ((variables.zInusingRczTop1)/(variables.zInusingRczBtm1)) * (variables.zovalue1);
+        variables.zInusingRcz1 = zInusingRcz;
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) =>
+                zInPageusingSWR(
+                    j: variables.j,
+                    realZL: variables.realZL, imaginaryZL: variables.imaginaryZL, realZo: variables.realZo,
+                    imaginaryZo: variables.imaginaryZo, zlvalue: variables.zlvalue, zovalue: variables.zovalue,
+                    zlvalue1: variables.zlvalue1, zovalue1: variables.zovalue1, rctop: variables.rctop,
+                    rcbtm: variables.rcbtm, rctop1: variables.rctop1, rcbtm1: variables.rcbtm1,
+                    beta: variables.beta, zPosition: variables.zPosition, zIn: variables.zIn, zIntop: variables.zIntop,
+                    zInbtm: variables.zInbtm, zIntop1: variables.zIntop1, zInbtm1: variables.zInbtm1,
+                    zIn1: variables.zIn1, tanbetaz: variables.tanbetaz , tanbetaz1 : variables.tanbetaz1)
+
+                ),);
+      });
+    }
+
+
     else {}
   }
+
+
+
+
+
+
+
+
+
 
   //display zin
   _zInDisplay(String input) {
@@ -730,10 +863,60 @@ class _calculationState extends State<calculation> {
         variables.zIntop1 = zIntop;
         variables.zInbtm1 = zInbtm;
         variables.zIn1 = zIn;
+        final rctop = ((zlvalue) - (zovalue));
+        final rcbtm = ((zlvalue) + (zovalue));
+        final rcvalue = rctop / rcbtm;
+        variables.rcvalue1 = rcvalue;
+        variables.rctop1 = rctop;
+        variables.rcbtm1 = rcbtm;
+        final j2betaZpos = Complex(re: cos(2 * variables.zPosition * variables.beta), im: sin(2 * variables.zPosition * variables.beta));
+        final rcAtz = variables.rcvalue1 * Complex(re: cos(2 * variables.zPosition * variables.beta), im: sin(2 * variables.zPosition * variables.beta));
+        variables.j2betaZpos1 = j2betaZpos;
+        variables.rcAtz1 = rcAtz;
+        final zInusingRczTop = Complex(re:1 , im:0)+variables.rcAtz1;
+        final zInusingRczBtm = Complex(re:1 , im:0) - variables.rcAtz1;
+        variables.zInusingRczTop1 = zInusingRczTop;
+        variables.zInusingRczBtm1 = zInusingRczBtm;
+        final zInusingRcz = ((variables.zInusingRczTop1)/(variables.zInusingRczBtm1)) * (variables.zovalue1);
+        variables.zInusingRcz1 = zInusingRcz;
       });
     }
+    else if (variables.betaa.text != "" && variables.zPos.text != "" && variables.swr.text != "" && variables.thetaRcc.text != "" && variables.thetaRoo.text != "" && variables.reZo.text != ""&& variables.imZo.text != "") {
+      setState(() {
+        variables.realZo = double.parse(variables.reZo.text);
+        variables.imaginaryZo = double.parse(variables.imZo.text);
+        variables.beta = double.parse(variables.betaa.text);
+        variables.zPosition = double.parse(variables.zPos.text);
+        variables.SWR = double.parse(variables.swr.text);
+        variables.thetaRc = double.parse(variables.thetaRcc.text);
+        variables.thetaRo = double.parse(variables.thetaRoo.text);
+        final zovalue = Complex(re: variables.realZo, im: variables.imaginaryZo);
+        variables.zovalue1 = zovalue;
+        final swrValue = ((variables.SWR - 1) / (1 + variables.SWR));
+        final thetaRo1 = variables.thetaRc - 2 * variables.beta * variables.zPosition;
+        final rcUsingSwr = Complex(re: swrValue * cos(thetaRo1), im: swrValue * sin(thetaRo1));
+        variables.rcUsingSwr1 = rcUsingSwr;
+        variables.rcvalue1 = variables.rcUsingSwr1;
+        variables.swrValue1 = swrValue;
+        variables.thetaRo2 = thetaRo1;
+        final j2betaZpos = Complex(re: cos(2 * variables.zPosition * variables.beta), im: sin(2 * variables.zPosition * variables.beta));
+        final rcAtz = variables.rcvalue1 * Complex(re: cos(2 * variables.zPosition * variables.beta), im: sin(2 * variables.zPosition * variables.beta));
+        variables.j2betaZpos1 = j2betaZpos;
+        variables.rcAtz1 = rcAtz;
+        final zInusingRczTop = Complex(re:1 , im:0)+variables.rcAtz1;
+        final zInusingRczBtm = Complex(re:1 , im:0) - variables.rcAtz1;
+        variables.zInusingRczTop1 = zInusingRczTop;
+        variables.zInusingRczBtm1 = zInusingRczBtm;
+        final zInusingRcz = ((variables.zInusingRczTop1)/(variables.zInusingRczBtm1)) * (variables.zovalue1);
+        variables.zInusingRcz1 = zInusingRcz;});}
     else {}
   }
+
+
+
+
+
+
 
   //calculate rcz
   _validateRczInput1(String input) {
@@ -772,7 +955,7 @@ class _calculationState extends State<calculation> {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) =>
-                rczPage(j: variables.j,
+                rczPageBoth(j: variables.j,
                   realZL: variables.realZL, imaginaryZL: variables.imaginaryZL, realZo: variables.realZo, imaginaryZo: variables.imaginaryZo,
                   zlvalue: variables.zlvalue, zovalue: variables.zovalue, zlvalue1: variables.zlvalue1, zovalue1: variables.zovalue1, rctop: variables.rctop, rcbtm: variables.rcbtm,
                   rctop1: variables.rctop1, rcbtm1: variables.rcbtm1, beta: variables.beta, zPosition: variables.zPosition, SWR: variables.SWR,
@@ -837,7 +1020,7 @@ class _calculationState extends State<calculation> {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) =>
-                rczPage(j: variables.j,
+                rczPage2(j: variables.j,
                   realZL: variables.realZL, imaginaryZL: variables.imaginaryZL, realZo: variables.realZo, imaginaryZo: variables.imaginaryZo,
                   zlvalue: variables.zlvalue, zovalue: variables.zovalue, zlvalue1: variables.zlvalue1, zovalue1: variables.zovalue1, rctop: variables.rctop, rcbtm: variables.rcbtm,
                   rctop1: variables.rctop1, rcbtm1: variables.rcbtm1, beta: variables.beta, zPosition: variables.zPosition, SWR: variables.SWR,

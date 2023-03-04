@@ -4,10 +4,10 @@ import 'package:fyp_v1/rcdescription.dart';
 import 'package:fyp_v1/variables.dart';
 
 
-class rczPage extends StatelessWidget {
+class rczPageBoth extends StatelessWidget {
   final variables = Variables();
 
-  rczPage({
+  rczPageBoth({
     required j, required imaginaryZL, required realZL, required realZo, required imaginaryZo, required rcvalue1,
     required zovalue, required zlvalue, required zovalue1, required zlvalue1, required rcbtm, required rctop,
     required rcbtm1, required rctop1, required beta, required zPosition, required SWR, required rcUsingSwr1, required thetaRc,
@@ -27,30 +27,28 @@ class rczPage extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         child:SingleChildScrollView(
           scrollDirection: Axis.vertical,
-        child: Padding(
-          padding:  EdgeInsets.only(left: 10.0, right: 10.0 , top: 30.0),
-          child: Container(
-            height: 5000,
-            width: 500,
-            child:  Column(
-              children: [
-                rcMethod1var(variables),
-                Text("" ,  style: TextStyle(fontSize: 25) , ),
-                Math.tex("${r' \,\beta= '}${variables.beta}${r'\; '},${r'\; '}Z${r'\, '}position = ${variables.zPosition}m " , textStyle:  TextStyle(fontSize: 25 , color: Colors.black) ,),
-                Text(" \n Result:  ${variables.rcAtz1.re.toStringAsFixed(3)} + ${variables.rcAtz1.im.toStringAsFixed(3)}j \n  "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
-                ExpansionTile(
-                  title: Text('More',style:TextStyle(color: Colors.black ),),
-                  backgroundColor: Colors.grey[200],
-                  collapsedBackgroundColor: Colors.yellow[300],
-                  children: [
-                    rczMethod(variables)
-                  ],
-                ),
-              ],
+          child: Padding(
+            padding:  EdgeInsets.only(left: 10.0, right: 10.0 , top: 30.0),
+            child: Container(
+              height: 5000,
+              width: 500,
+              child:  Column(
+                children: [
+                  rcMethod12var(variables),
+                  Text(" \n Result:  ${variables.rcAtz1.re.toStringAsFixed(3)} + ${variables.rcAtz1.im.toStringAsFixed(3)}j \n  "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
+                  ExpansionTile(
+                    title: Text('More',style:TextStyle(color: Colors.black ),),
+                    backgroundColor: Colors.grey[200],
+                    collapsedBackgroundColor: Colors.yellow[300],
+                    children: [
+                      rczMethod(variables)
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-      ),
       ),
     );
   }
