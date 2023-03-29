@@ -36,7 +36,7 @@ class _formulaPageState extends State<formulaPage>
 
 
                   SizedBox(height: 20),
-                  ExpansionTile(title: Math.tex("${r'\beta : \;Beta/Wave\;Number\;(m)'} ", textStyle:TextStyle(fontSize: 25 , ),),
+                  ExpansionTile(title: Math.tex("${r'\beta : Wave\;Number\;(m)'} ", textStyle:TextStyle(fontSize: 25 , ),),
                     backgroundColor: Colors.grey[200],
                     children:[
                       ListTile(title: Math.tex("${r'\beta = \frac{2\pi}{\lambda}'}", textStyle:TextStyle(fontSize: 25 ,  ),),),
@@ -44,7 +44,7 @@ class _formulaPageState extends State<formulaPage>
 
 
                   SizedBox(height: 20),
-                  ExpansionTile(title: Math.tex("${r'\Z : \;Z\;position\;(m)'} ", textStyle:TextStyle(fontSize: 25 ,  ),),
+                  ExpansionTile(title: Math.tex("${r'Z : \;Z\;position\;(m)'} ", textStyle:TextStyle(fontSize: 25 ,  ),),
                     backgroundColor: Colors.grey[200],
                     children:[
                       ListTile(title: Math.tex("${r'\Z  :\,-\ell < Z < 0'}", textStyle:TextStyle(fontSize: 25 ,  ),),),
@@ -112,7 +112,7 @@ class _formulaPageState extends State<formulaPage>
 
 
                   SizedBox(height: 20),
-                  ExpansionTile(title: Math.tex("Input${r'\ \,'}Impedance${r'\ \,'}${r'\Z_'}{in}(-${r'\ell'}) " , textStyle:  TextStyle(fontSize: 23 ,  fontWeight: FontWeight.bold),),
+                  ExpansionTile(title: Math.tex("Input${r'\ \,'}Impedance${r'\ \,'}${r'Z_'}{in}(-${r'\ell'}) " , textStyle:  TextStyle(fontSize: 23 ,  fontWeight: FontWeight.bold),),
                     backgroundColor: Colors.grey[200],
                     children:[
                       ListTile( title: Math.tex("${r'\Z_'}{in}(-${r'\ell'}) =${r'\frac{Z_L + jZ_otan(\beta \ell)}{Z_o + jZ_Ltan(\beta \ell)}'}${r' \Z_o \;\;\Omega'}", textStyle: TextStyle(fontSize: 25 ,) ,  )),
@@ -148,8 +148,8 @@ class _formulaPageState extends State<formulaPage>
                       ListTile( title: Math.tex("${r'\! P_L= \frac{V_g ^{\;\,2}}{8Z_g}'}(1-|${r'\Gamma_L'}|^2)${r'\ W'}", textStyle: TextStyle(fontSize: 25 ,)),),
                       ListTile( title: Math.tex("", textStyle: TextStyle(fontSize: 20 , color: Colors.red) ,  )),
                       ListTile( title: Math.tex("${r'\! P_L= \frac {1}{2}|\frac{V_g }{Z_g+ Z_{in}}|^2\;Re(Z_{in})'}${r'\ W'}", textStyle: TextStyle(fontSize: 25 ,)),),
-                      ListTile( title: Math.tex("  ${r'\ V_g'}=   ", textStyle: TextStyle(fontSize: 20 , color: Colors.red , fontWeight: FontWeight.bold) ,)),
-                      ListTile( title: Math.tex("  ${r'\ Z_g'}=  ", textStyle: TextStyle(fontSize: 20 , color: Colors.red , fontWeight: FontWeight.bold) ,)),
+                      ListTile( title: Math.tex("  ${r'\ V_g'}= Generator ${r'\,'}Voltage  ", textStyle: TextStyle(fontSize: 20 , color: Colors.red , fontWeight: FontWeight.bold) ,)),
+                      ListTile( title: Math.tex("  ${r'\ Z_g'}= Output ${r'\,'}Impedance ", textStyle: TextStyle(fontSize: 20 , color: Colors.red , fontWeight: FontWeight.bold) ,)),
                     ],),
 
                   SizedBox(height: 20),

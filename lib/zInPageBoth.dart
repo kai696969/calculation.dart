@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:fyp_v1/variables.dart';
-import 'package:fyp_v1/rcdescription.dart';
+import 'package:fyp_v1/description.dart';
 
 class zInPageBoth extends StatelessWidget
 {
@@ -23,10 +23,19 @@ zInPageBoth({required j ,required realZL ,  required imaginaryZL ,required realZ
         centerTitle: true,
         backgroundColor: Colors.yellow[800],
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child:SingleChildScrollView(
-          scrollDirection: Axis.vertical,
+    body: SingleChildScrollView(
+    scrollDirection: Axis.vertical,
+    child: Padding(
+    padding:  EdgeInsets.only(left: 00.0, right: 00.0 , top: 00.0),
+    child:InteractiveViewer(
+    boundaryMargin: EdgeInsets.all(15.0),
+    minScale: 0.1,
+    maxScale: 2.0,
+    panEnabled: true,
+    scaleEnabled: true,
+    onInteractionEnd: (details) {
+    // do something when interaction ends, such as update a state variable
+    },
           child: Padding(
             padding:  EdgeInsets.only(left: 10.0, right: 10.0 , top: 30.0),
             child: Container(
@@ -34,9 +43,12 @@ zInPageBoth({required j ,required realZL ,  required imaginaryZL ,required realZ
               width: 600,
               child:  Column(
                 children: [
-                  rcMethod12var(variables),
+                  Text("Variables Values \n",style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline, ) ,  ),
+                  rcMethod1var(variables),
+                  Text(" \n",style: TextStyle(fontSize: 10 ,  decoration: TextDecoration.underline, ) ,  ),
+                  rcMethod2var(variables),
                   Text("" ,  style: TextStyle(fontSize: 25) , ),
-                  Text(" \n Result: ${variables.zIn1.re.toStringAsFixed(3)} + ${variables.zIn1.im.toStringAsFixed(3)}j \n "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
+                  Text(" \n Result: ${variables.zIn1.re.toStringAsPrecision(3)} + ${variables.zIn1.im.toStringAsPrecision(3)}j \n "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
                   zInAllinputs(variables)
                 ],
               ),
@@ -44,6 +56,7 @@ zInPageBoth({required j ,required realZL ,  required imaginaryZL ,required realZ
           ),
         ),
       ),
+    ),
     );
   }
 }

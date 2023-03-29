@@ -1,7 +1,7 @@
 import 'package:extended_math/extended_math.dart';
 import 'package:flutter/cupertino.dart';
 
-class Variables {
+class Variables {                                                                                                                             
   Complex j = Complex(re: 0, im: 1);
   double pi = 3.14159265359;
   double realZL = 0;
@@ -9,7 +9,7 @@ class Variables {
   double realZo = 0;
   double imaginaryZo = 0;
   var zlvalue = Complex(re: 0, im: 0);
-  var zlvalue1 = Complex(re: 0, im: 0);
+  var zlvalue1 = Complex(re: 0, im:  0);
   var zovalue = Complex(re: 0, im: 0);
   var zovalue1 = Complex(re: 0, im: 0);
   var rctop = Complex(re:0 , im:0);                           // to calculate rctop value
@@ -53,6 +53,26 @@ class Variables {
   double freq =0;                                                       //input
   double Vg = 0;                                                        // input
   double Zg = 0;                                                        //input
+  var voplus = Complex(re:0 , im:0);
+  var voplus1 = Complex(re:0 , im:0);
+  var vominus = Complex(re:0 , im:0);
+  var vominus1 = Complex(re:0 , im:0);
+  var vatzvalue = Complex(re:0 , im:0);
+  var vatzvalue1 = Complex(re:0 , im:0);
+  var vatzvaluee = Complex(re:0 , im:0);
+  var vatzvaluee1 = Complex(re:0 , im:0);
+  var iatzvalue = Complex(re:0 , im:0);
+  var iatzvalue1 = Complex(re:0 , im:0);
+  var Vin = Complex(re:0 , im:0);
+  var Vin1 = Complex(re:0 , im:0);
+  var ZgoverZinplusZg =  Complex(re:0 , im:0);
+  var ZgoverZinplusZg1 = Complex(re:0 , im:0);
+  var jbetaZpos1 = Complex(re:0 , im:0);
+  var jbetaZpos = Complex(re:0 , im:0);
+  double power = 0;
+  double power1 =0;
+  double powerr = 0;
+  double powerr1 =0;
   TextEditingController reZL = TextEditingController(text: '');
   TextEditingController imZL = TextEditingController(text: '');
   TextEditingController reZo = TextEditingController(text: '');
