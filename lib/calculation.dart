@@ -1,3 +1,4 @@
+import 'package:extended_math/extended_math.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
@@ -31,19 +32,29 @@ class calculation extends StatefulWidget {
 class _calculationState extends State<calculation> {
   final variables = Variables();
 
-
-
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Calculator'),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
+body: GestureDetector(
+    onTap: () {
+      FocusScope.of(context).unfocus();
+    },
+      child: SingleChildScrollView(
+    scrollDirection: Axis.vertical,
+    child: Padding(
+    padding:  EdgeInsets.only(left: 0.0, right: 0.0 , top: 0.0),
+    child:InteractiveViewer(
+    boundaryMargin: EdgeInsets.all(15.0),
+    minScale: 0.1,
+    maxScale: 2.0,
+    panEnabled: true,
+    scaleEnabled: true,
+    onInteractionEnd: (details) {
+    // do something when interaction ends, such as update a state variable
+    },
           child: Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 10.0, top: 10.0),
             child: Container(
@@ -55,13 +66,13 @@ class _calculationState extends State<calculation> {
                         Expanded(
                             child: Padding(
                               padding: const EdgeInsets.only(
-                                  right: 8.0, top: 30.0),
+                                  right: 8.0, top: 10.0),
                               child: TextField(
                                 controller: variables.reZL,
                                 decoration: InputDecoration(
-                                    hintText: "ZL ᵣₑ (Ω)",
-                                    hintStyle: TextStyle(
-                                      fontSize: 20, color: Colors.blue,),
+                                    label:Text( "ZL ᵣₑ (Ω)",
+                                    style: TextStyle(
+                                      fontSize: 20, color: Colors.blue,)),
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(10))
                                 ),
@@ -80,13 +91,13 @@ class _calculationState extends State<calculation> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 8.0, top: 30.0),
+                          padding: const EdgeInsets.only(right: 8.0, top: 10.0),
                           child: TextField(
                             controller: variables.imZL,
                             decoration: InputDecoration(
-                                hintText: "ZL ᵢₘ (jΩ)",
-                                hintStyle: TextStyle(
-                                  fontSize: 20, color: Colors.blue,),
+                                label:Text( "ZL ᵢₘ (jΩ)",
+                                style: TextStyle(
+                                  fontSize: 20, color: Colors.blue,)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10))
                             ),
@@ -106,13 +117,13 @@ class _calculationState extends State<calculation> {
                       Expanded(
                           child: Padding(
                             padding: const EdgeInsets.only(
-                                right: 8.0, top: 30.0),
+                                right: 8.0, top: 10.0),
                             child: TextField(
                               controller: variables.reZo,
                               decoration: InputDecoration(
-                                  hintText: "Zo ᵣₑ (Ω)",
-                                  hintStyle: TextStyle(
-                                    fontSize: 20, color: Colors.blue,),
+                                  label: Text("Zo ᵣₑ (Ω)",
+                                  style: TextStyle(
+                                    fontSize: 20, color: Colors.blue,)),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10))
                               ),
@@ -122,8 +133,6 @@ class _calculationState extends State<calculation> {
                                   _rcDisplay(variables.reZo.text);
                                   _zInDisplay(variables.reZo.text);
                                   _rczDisplay(variables.reZo.text);
-
-
                                 });
                               },
                             ),
@@ -140,9 +149,9 @@ class _calculationState extends State<calculation> {
                           child: TextField(
                             controller: variables.imZo,
                             decoration: InputDecoration(
-                                hintText: "Zo  ᵢₘ (jΩ)",
-                                hintStyle: TextStyle(
-                                  fontSize: 20, color: Colors.blue,),
+                                label:Text( "Zo  ᵢₘ (jΩ)",
+                                style: TextStyle(
+                                  fontSize: 20, color: Colors.blue,)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10))
                             ),
@@ -166,9 +175,9 @@ class _calculationState extends State<calculation> {
                             child: TextField(
                               controller: variables.betaa,
                               decoration: InputDecoration(
-                                  hintText: "β",
-                                  hintStyle: TextStyle(
-                                    fontSize: 20, color: Colors.blue,),
+                                  label:Text( "β",
+                                  style: TextStyle(
+                                    fontSize: 20, color: Colors.blue,)),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10))
                               ),
@@ -190,9 +199,9 @@ class _calculationState extends State<calculation> {
                           child: TextField(
                             controller: variables.zPos,
                             decoration: InputDecoration(
-                                hintText: "Z (m)",
-                                hintStyle: TextStyle(
-                                  fontSize: 20, color: Colors.blue,),
+                                label:Text( "Z (m)",
+                                style: TextStyle(
+                                  fontSize: 20, color: Colors.blue,)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10))
                             ),
@@ -220,9 +229,9 @@ class _calculationState extends State<calculation> {
                             child: TextField(
                               controller: variables.swr,
                               decoration: InputDecoration(
-                                  hintText: "SWR",
-                                  hintStyle: TextStyle(
-                                    fontSize: 20, color: Colors.blue,),
+                                  label:Text( "SWR",
+                                  style: TextStyle(
+                                    fontSize: 20, color: Colors.blue,)),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10))
                               ),
@@ -245,9 +254,9 @@ class _calculationState extends State<calculation> {
                           child: TextField(
                             controller: variables.thetaRoo,
                             decoration: InputDecoration(
-                                hintText: "θₒ (rad)",
-                                hintStyle: TextStyle(
-                                  fontSize: 20, color: Colors.blue,),
+                                label:Text( "θₒ (rad)",
+                                style: TextStyle(
+                                  fontSize: 20, color: Colors.blue,)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10))
                             ),
@@ -271,9 +280,9 @@ class _calculationState extends State<calculation> {
                             child: TextField(
                               controller: variables.thetaRcc,
                               decoration: InputDecoration(
-                                  hintText: "θᴦ (rad)",
-                                  hintStyle: TextStyle(
-                                    fontSize: 20, color: Colors.blue,),
+                                  label:Text( "θᴦ (rad)",
+                                  style: TextStyle(
+                                    fontSize: 20, color: Colors.blue,)),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10))
                               ),
@@ -302,9 +311,9 @@ class _calculationState extends State<calculation> {
                           child: TextField(
                             controller: variables.Vgg,
                             decoration: InputDecoration(
-                                hintText: "Vg(V)",
-                                hintStyle: TextStyle(
-                                  fontSize: 20, color: Colors.blue,),
+                                label:Text( "Vg(V)",
+                                style: TextStyle(
+                                  fontSize: 20, color: Colors.blue,)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10))
                             ),
@@ -331,9 +340,9 @@ class _calculationState extends State<calculation> {
                           child: TextField(
                             controller: variables.Zgg,
                             decoration: InputDecoration(
-                                hintText: "Zg(Ω)",
-                                hintStyle: TextStyle(
-                                  fontSize: 20, color: Colors.blue,),
+                                label:Text( "Zg(Ω)",
+                                style: TextStyle(
+                                  fontSize: 20, color: Colors.blue,)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10))
                             ),
@@ -405,7 +414,7 @@ class _calculationState extends State<calculation> {
                           _validateRczInput1(variables.thetaRoo.text);
                     },
                     child: Math.tex(
-                      "${r'\Gamma_L(Z)='}${variables.rcAtz1.re.toStringAsFixed(3)}+${variables.rcAtz1.im.toStringAsFixed(3)}j ", textStyle: TextStyle(fontSize: 30, color: Colors.white,),),
+                      "${r'\Gamma(Z)='}${variables.rcAtz1.re.toStringAsFixed(3)}+${variables.rcAtz1.im.toStringAsFixed(3)}j ", textStyle: TextStyle(fontSize: 30, color: Colors.white,),),
                   ),
 
                   //zin
@@ -542,6 +551,19 @@ class _calculationState extends State<calculation> {
                       variables.thetaRo = 0;
                       variables.Vg = 0;
                       variables.Zg = 0;
+                      variables.rcvalue1= Complex(re:0 , im:0);
+                      variables.rcAtz1= Complex(re:0 , im:0);
+                      variables.zInusingRcz1= Complex(re:0 , im:0);
+                      variables.Vin1= Complex(re:0 , im:0);
+                      variables.voplus1= Complex(re:0 , im:0);
+                      variables.vominus1= Complex(re:0 , im:0);
+                      variables.vatzvalue1= Complex(re:0 , im:0);
+                      variables.iatzvalue1= Complex(re:0 , im:0);
+                      variables.power1 = 0;
+
+
+
+
                     },
                     child: Text('Clear All', style: TextStyle(fontSize: 25),),
                   ),
@@ -551,6 +573,8 @@ class _calculationState extends State<calculation> {
           ),
         ),
       ),
+      ),
+),
     );
   }
 
@@ -953,8 +977,8 @@ class _calculationState extends State<calculation> {
         executePower1(context, variables);
         final power = (((variables.Vg*variables.Vg)/(8*variables.Zg)))*(1- (variables.rcvalue1.module.abs()*variables.rcvalue1.module.abs()));
         variables.power1 = power;
-        final powerr = 0.5*((variables.Vg/ (variables.Zg + variables.zInusingRcz1.re)).abs() * (variables.Vg/ (variables.Zg + variables.zInusingRcz1.re)).abs())*variables.zInusingRcz1.re;
-        variables.powerr1 = powerr;
+        // final powerr = 0.5*((variables.Vg/ (variables.Zg + variables.zInusingRcz1.re)).abs() * (variables.Vg/ (variables.Zg + variables.zInusingRcz1.re)).abs())*variables.zInusingRcz1.re;
+        // variables.powerr1 = powerr;
         Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context)=>powerPage(j:variables.j ,realZL:variables.realZL ,  imaginaryZL:variables.imaginaryZL , realZo:variables.realZo ,
@@ -974,8 +998,8 @@ class _calculationState extends State<calculation> {
         variables.swr.text != "" && variables.thetaRcc.text != "" && variables.thetaRoo.text != "" && variables.Vgg.text != "" && variables.Zgg.text != "" && variables.Zgg.text != variables.reZo.text)
       {
         executePower1(context, variables);
-        final powerr = 0.5*((variables.Vg/ (variables.Zg + variables.zInusingRcz1.re)).abs() * (variables.Vg/ (variables.Zg + variables.zInusingRcz1.re)).abs())*variables.zInusingRcz1.re;
-        variables.powerr1 = powerr;
+        final power = 0.5*((variables.Vg/ (variables.Zg + variables.zInusingRcz1.re)).abs() * (variables.Vg/ (variables.Zg + variables.zInusingRcz1.re)).abs())*variables.zInusingRcz1.re;
+        variables.power1 = power;
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context)=>powerPage1(j:variables.j ,realZL:variables.realZL ,  imaginaryZL:variables.imaginaryZL , realZo:variables.realZo ,
@@ -1003,6 +1027,8 @@ class _calculationState extends State<calculation> {
       executePower1(context, variables);
       final power = (((variables.Vg*variables.Vg)/(8*variables.Zg)))*(1- (variables.rcvalue1.module.abs()*variables.rcvalue1.module.abs()));
       variables.power1 = power;
+      // final powerr = 0.5*((variables.Vg/ (variables.Zg + variables.zInusingRcz1.re)).abs() * (variables.Vg/ (variables.Zg + variables.zInusingRcz1.re)).abs())*variables.zInusingRcz1.re;
+      // variables.powerr1 = powerr;
 
     }
     else if(variables.reZL.text != "" && variables.imZL.text != "" && variables.reZo.text != "" && variables.imZo.text != "" && variables.betaa.text != "" && variables.zPos.text != "" &&

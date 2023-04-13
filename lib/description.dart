@@ -9,11 +9,11 @@ Widget rcMethod1var(Variables variables) {
   return Column(
     children: <Widget>[
 FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-    child:  Math.tex("${r' \,Z_L '}=${variables.realZL.toStringAsPrecision(3)} + ${variables.imaginaryZL.toStringAsPrecision(3)}j," , textStyle:  TextStyle(fontSize: 25 , color: Colors.black) , ),),
+    child:  Math.tex("${r' \,Z_L '}=(${variables.realZL.toStringAsPrecision(3)}) + (${variables.imaginaryZL.toStringAsPrecision(3)})j," , textStyle:  TextStyle(fontSize: 25 , color: Colors.black) , ),),
       Text("" ,  style: TextStyle(fontSize: 25) , ),
   FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
   child:
-  Math.tex("${r' \,Z_o '}=${variables.realZo.toStringAsPrecision(3)} + ${variables.imaginaryZo.toStringAsPrecision(3)}j, " , textStyle:  TextStyle(fontSize: 25 , color: Colors.black) ,),),
+  Math.tex("${r' \,Z_o '}=(${variables.realZo.toStringAsPrecision(3)}) + (${variables.imaginaryZo.toStringAsPrecision(3)})j, " , textStyle:  TextStyle(fontSize: 25 , color: Colors.black) ,),),
 
  ],
   );
@@ -24,11 +24,11 @@ Widget rcMethod2var(Variables variables) {
     children: <Widget>[
   FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
     child:
-    Math.tex("${r' \,\beta= '}${variables.beta}${r'\; '},${r'\; '}Z${r'\, '}position = ${variables.zPosition}m " , textStyle:  TextStyle(fontSize: 25 , color: Colors.black) ,),),
+    Math.tex("${r' \,\beta= '}${variables.beta.toStringAsPrecision(3)}${r'\; '},${r'\; '}Z${r'\, '}position = ${variables.zPosition.toStringAsPrecision(3)}m " , textStyle:  TextStyle(fontSize: 25 , color: Colors.black) ,),),
       Text("" ,  style: TextStyle(fontSize: 25) , ),
   FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
   child:
-  Math.tex("${r' \,\theta_o = '}${variables.thetaRo}${r'\, '}rad${r'\; '},${r'\; '}${r' \theta_ '}${r' \Gamma '}=${variables.thetaRc}${r'\, '}rad " , textStyle:  TextStyle(fontSize: 25 , color: Colors.black) ,),),
+  Math.tex("${r' \,\theta_o = '}${variables.thetaRo.toStringAsPrecision(3)}${r'\, '}rad${r'\; '},${r'\; '}${r' \theta_ '}${r' \Gamma '}=${variables.thetaRc.toStringAsPrecision(3)}${r'\, '}rad " , textStyle:  TextStyle(fontSize: 25 , color: Colors.black) ,),),
 
       ],
   );
@@ -42,9 +42,9 @@ Widget recttopolar(var a, var b) {
         ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Math.tex(" ${'='} ${r'\sqrt{A^2 + B^2} \angle'} ${r'\tan^{-1}'}{(} ${r'\frac{B}{A}'}{)}", textStyle: TextStyle(fontSize: 25) ,)),),
         ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("= ${r'\sqrt'}{(${a.toStringAsPrecision(3)})^2 + (${b.toStringAsPrecision(3)})^2}${r'\angle \tan^{-1}'}${r'\frac'}{${b.toStringAsPrecision(3)}}{${a.toStringAsPrecision(3)}} ", textStyle: TextStyle(fontSize: 25) ,)),),
+                        child:  Math.tex("= ${r'\sqrt'}{(${a.toStringAsPrecision(3)})^2 + (${b.toStringAsPrecision(3)})^2}${r'\angle \tan^{-1}'}${r'\frac'}{${b.toStringAsPrecision(3)}}{${a.toStringAsPrecision(3)}}rad ", textStyle: TextStyle(fontSize: 25) ,)),),
         ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("= ${sqrt(a*a + b*b).toStringAsPrecision(3)}${r'\angle'}${atan(b/a).toStringAsPrecision(3)} ", textStyle: TextStyle(fontSize: 25) ,)),),
+                        child:  Math.tex("= (${sqrt(a*a + b*b).toStringAsPrecision(3)})${r'\angle'}(${atan(b/a).toStringAsPrecision(3)})rad ", textStyle: TextStyle(fontSize: 25) ,)),),
       ]
   );
 
@@ -58,9 +58,9 @@ Widget polartorect(var a, var b ) {
         ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Math.tex("{=}${r'\;'}Acos(B)+Asin(B)j", textStyle: TextStyle(fontSize: 25 ,) ,  )),),
         ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("{=}${r'\;'}${a.toStringAsPrecision(3)}cos(${b.toStringAsPrecision(3)})+${a.toStringAsPrecision(3)}sin(${b.toStringAsPrecision(3)})j", textStyle: TextStyle(fontSize: 25 ,) ,  )),),
+                        child:  Math.tex("{=}${r'\;'}(${a.toStringAsPrecision(3)})cos(${b.toStringAsPrecision(3)})+(${a.toStringAsPrecision(3)})sin(${b.toStringAsPrecision(3)})j", textStyle: TextStyle(fontSize: 25 ,) ,  )),),
         ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("{=}${r'\;'} ${(a*cos(b)).toStringAsPrecision(3)} + ${(a*sin(b)).toStringAsPrecision(3)} j", textStyle: TextStyle(fontSize: 25 ,) ,  )),),
+                        child:  Math.tex("{=}${r'\;'} (${(a*cos(b)).toStringAsPrecision(3)}) + (${(a*sin(b)).toStringAsPrecision(3)})j", textStyle: TextStyle(fontSize: 25 ,) ,  )),),
       ]
   );
 }
@@ -113,7 +113,7 @@ Widget jztanbetazdesc(var a, var b , var c  ) {
         ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Math.tex(" = (j)*($b) * (${c.toStringAsPrecision(3)})rad ", textStyle: TextStyle(fontSize: 25 ,) , )),),
         ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex(" = ${(b * a * c).re.toStringAsPrecision(3)} +${(b * a * c).im.toStringAsPrecision(3)}j",textStyle: TextStyle(fontSize: 25 ,) ,  )),),
+                        child:  Math.tex(" = (${(b * a * c).re.toStringAsPrecision(3)}) +(${(b * a * c).im.toStringAsPrecision(3)})j",textStyle: TextStyle(fontSize: 25 ,) ,  )),),
         ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Math.tex(" ${r'\ [ \; \; i=j,\;\; j*j = -1\;\; ]'} ", textStyle: TextStyle(fontSize: 23 , color: Colors.red) , )),),
       ]
@@ -124,26 +124,26 @@ Widget rczMethod(Variables variables) {
   return Column(
     children: [
       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("${r'\Gamma_L'}{(z)} = ${r'\Gamma_L *'}e^{{j2}${ r'\beta '}z}",  textStyle: TextStyle(fontSize: 25 , color: Colors.deepPurple , fontWeight: FontWeight.bold) ,  )),),
+                        child:  Math.tex("${r'\Gamma'}{(z)} = ${r'\Gamma_L *'}e^{{j2}${ r'\beta '}z}",  textStyle: TextStyle(fontSize: 25 , color: Colors.deepPurple , fontWeight: FontWeight.bold) ,  )),),
       ListTile( title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Text.rich(TextSpan(text: 'Step 1:   ', style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline,),),)),),
       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("${r'\Gamma_L= '}{ ${variables.rcvalue1.re.toStringAsPrecision(3)} + ${variables.rcvalue1.im.toStringAsPrecision(3)}j} " , textStyle:  TextStyle(fontSize: 25)),),),
+                        child:  Math.tex("${r'\Gamma_L= '}{(${variables.rcvalue1.re.toStringAsPrecision(3)}) + (${variables.rcvalue1.im.toStringAsPrecision(3)})j} " , textStyle:  TextStyle(fontSize: 25)),),),
       ListTile( title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Text.rich(TextSpan(text: 'Step 2:   ', style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline,),),)),),
       ej2betazdesc(variables.zPosition , variables.beta),
       ListTile( title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Text.rich(TextSpan(text: 'Step 3:   ', style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline,),),)) ,),
       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("${r'\Gamma_L'}({${variables.zPosition}}) ", textStyle: TextStyle(fontSize: 25) ,)),),
+                        child:  Math.tex("${r'\Gamma'}({${variables.zPosition}}) ", textStyle: TextStyle(fontSize: 25) ,)),),
       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("=({${variables.rcvalue1.re.toStringAsPrecision(3)} + ${variables.rcvalue1.im.toStringAsPrecision(3)}j)} *{${ej2betaz(variables.zPosition , variables.beta)}} ", textStyle: TextStyle(fontSize: 25) ,)),),
+                        child:  Math.tex("=({((${variables.rcvalue1.re.toStringAsPrecision(3)}) + (${variables.rcvalue1.im.toStringAsPrecision(3)})j))} *{${ej2betaz(variables.zPosition , variables.beta)}} ", textStyle: TextStyle(fontSize: 25) ,)),),
       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("= {${variables.rcAtz1.re.toStringAsPrecision(3)} + ${variables.rcAtz1.im.toStringAsPrecision(3)}j}", textStyle: TextStyle(fontSize: 25) ,)),),
+                        child:  Math.tex("= {(${variables.rcAtz1.re.toStringAsPrecision(3)}) + (${variables.rcAtz1.im.toStringAsPrecision(3)})j}", textStyle: TextStyle(fontSize: 25) ,)),),
       ExpansionTile(title: Text("Details ",style: TextStyle(fontSize: 20 ,color: Colors.blue)),
           children: [
             ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("{${"e ^{{j}(${(2*variables.beta*variables.zPosition).toStringAsPrecision(3)})}"}}${"="}${variables.j2betaZpos1.re.toStringAsPrecision(3)} + ${variables.j2betaZpos1.im.toStringAsPrecision(3)}j" , textStyle:  TextStyle(fontSize: 25)),),),
+                        child:  Math.tex("{${"e ^{{j}(${(2*variables.beta*variables.zPosition).toStringAsPrecision(3)})}"}}${"="}(${variables.j2betaZpos1.re.toStringAsPrecision(3)}) + (${variables.j2betaZpos1.im.toStringAsPrecision(3)})j" , textStyle:  TextStyle(fontSize: 25)),),),
             polartorect(1 , 2*variables.zPosition*variables.beta )
           ]
       ),
@@ -176,11 +176,11 @@ ListTile( title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.sc
 ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Math.tex("${r'Z_L + jZ_otan(\beta \ell)'}",textStyle: TextStyle(fontSize: 25 ,) ,  )),),
 ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("= ${(variables.zIntop1).re.toStringAsPrecision(3)}+${(variables.zIntop1).im.toStringAsPrecision(3)}j",textStyle: TextStyle(fontSize: 25 ,) ,  )),),
+                        child:  Math.tex("= (${(variables.zIntop1).re.toStringAsPrecision(3)})+(${(variables.zIntop1).im.toStringAsPrecision(3)})j",textStyle: TextStyle(fontSize: 25 ,) ,  )),),
 ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Math.tex("${r'Z_o + jZ_Ltan(\beta \ell)'}",textStyle: TextStyle(fontSize: 25 ,) ,  )),),
 ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("= ${(variables.zInbtm1).re.toStringAsPrecision(3)}+${(variables.zInbtm1).im.toStringAsPrecision(3)}j",textStyle: TextStyle(fontSize: 25 ,) ,  )),),
+                        child:  Math.tex("= (${(variables.zInbtm1).re.toStringAsPrecision(3)})+(${(variables.zInbtm1).im.toStringAsPrecision(3)})j",textStyle: TextStyle(fontSize: 25 ,) ,  )),),
 ExpansionTile(title: Text("Details",style: TextStyle(fontSize: 20 , color: Colors.blue)),
 children: [
 ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
@@ -206,9 +206,9 @@ ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.s
 ListTile( title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Text.rich(TextSpan(text: 'Step 1:   ', style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline,),),)),),
 ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("1+${r'\Gamma_L e^{2j \beta z}= '}{ ${variables.zInusingRczTop1.re.toStringAsPrecision(3)} + ${variables.zInusingRczTop1.im.toStringAsPrecision(3)}j} " , textStyle:  TextStyle(fontSize: 25)),),),
+                        child:  Math.tex("1+${r'\Gamma_L e^{2j \beta z}= '}{(${variables.zInusingRczTop1.re.toStringAsPrecision(3)}) + (${variables.zInusingRczTop1.im.toStringAsPrecision(3)})j} " , textStyle:  TextStyle(fontSize: 25)),),),
 ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("1-${r'\Gamma_L e^{2j \beta z}= '}{ ${variables.zInusingRczBtm1.re.toStringAsPrecision(3)} + ${variables.zInusingRczBtm1.im.toStringAsPrecision(3)}j} " , textStyle:  TextStyle(fontSize: 25)),),),
+                        child:  Math.tex("1-${r'\Gamma_L e^{2j \beta z}= '}{ (${variables.zInusingRczBtm1.re.toStringAsPrecision(3)}) + (${variables.zInusingRczBtm1.im.toStringAsPrecision(3)})j} " , textStyle:  TextStyle(fontSize: 25)),),),
 ListTile( title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Text.rich(TextSpan(text: 'Step 2:   ', style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline,),),)),),
 Text("\n"),
@@ -226,13 +226,13 @@ Widget zInMethodStep2 (var a , var b , var c , var d)  // a/b * c function
   return Column(
     children: [
       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-          child:  Math.tex("${r'\frac'}{${(a).re.toStringAsPrecision(3)}+${(a).im.toStringAsPrecision(3)}j}{${(b).re.toStringAsPrecision(3)}+${(b).im.toStringAsPrecision(3)}j}* ${c}", textStyle: TextStyle(fontSize: 25 ,) ,  )),),
+          child:  Math.tex("${r'\frac'}{(${(a).re.toStringAsPrecision(3)})+(${(a).im.toStringAsPrecision(3)})j}{(${(b).re.toStringAsPrecision(3)})+(${(b).im.toStringAsPrecision(3)})j}* ${c}", textStyle: TextStyle(fontSize: 25 ,) ,  )),),
 
       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-          child:  Math.tex("= ${r'\frac'}{${(a).module.toStringAsPrecision(3)}${r'\angle'}${(a).argument.toStringAsPrecision(3)}}{${(b).module.toStringAsPrecision(3)}${r'\angle'}${(b).argument.toStringAsPrecision(3)}}* ${c.module.toStringAsPrecision(3)}${r'\angle'}${c.argument.toStringAsPrecision(3)}", textStyle: TextStyle(fontSize: 25 ,) ,  )),),
+          child:  Math.tex("= ${r'\frac'}{(${(a).module.toStringAsPrecision(3)})${r'\angle'}(${(a).argument.toStringAsPrecision(3)})rad}{(${(b).module.toStringAsPrecision(3)})${r'\angle'}(${(b).argument.toStringAsPrecision(3)})rad}* (${c.module.toStringAsPrecision(3)})${r'\angle'}(${c.argument.toStringAsPrecision(3)})", textStyle: TextStyle(fontSize: 25 ,) ,  )),),
 
       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-          child:  Math.tex("=${d.module.toStringAsPrecision(3)}${r'\angle'}${d.argument.toStringAsPrecision(3)}",textStyle: TextStyle(fontSize: 25 ,) ,  )),),
+          child:  Math.tex("=(${d.module.toStringAsPrecision(3)})${r'\angle'}(${d.argument.toStringAsPrecision(3)})rad",textStyle: TextStyle(fontSize: 25 ,) ,  )),),
       ExpansionTile(title: Text("Details",style: TextStyle(fontSize: 20 , color: Colors.blue)),
           children: [
             recttopolar(a.re , a.im),
@@ -249,11 +249,11 @@ Widget rcMethod1Step2 (var a , var b , var c )    // a/b fraction function
   return Column(
     children: [
       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-          child:  Math.tex("${r' =\;'}${r' \frac{'}${a.re.toStringAsPrecision(3)} + ${a.im.toStringAsPrecision(3)}j${r'}{'}${b.re.toStringAsPrecision(3)} + ${b.im.toStringAsPrecision(3)}j${r'}'}", textStyle: TextStyle(fontSize: 25) ,)),),
+          child:  Math.tex("${r' =\;'}${r' \frac{'}(${a.re.toStringAsPrecision(3)}) + (${a.im.toStringAsPrecision(3)})j${r'}{'}(${b.re.toStringAsPrecision(3)}) + (${b.im.toStringAsPrecision(3)})j${r'}'}", textStyle: TextStyle(fontSize: 25) ,)),),
       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-        child:  Math.tex("${r' =\;'}${r'\frac'}{${a.module.toStringAsPrecision(3)}${r'\angle'}${a.argument.toStringAsPrecision(3)}rad}{${b.module.toStringAsPrecision(3)}${r'\angle'}${b.argument.toStringAsPrecision(3)}rad}", textStyle: TextStyle(fontSize: 25),),),),
+        child:  Math.tex("${r' =\;'}${r'\frac'}{(${a.module.toStringAsPrecision(3)})${r'\angle'}(${a.argument.toStringAsPrecision(3)})rad}{(${b.module.toStringAsPrecision(3)})${r'\angle'}(${b.argument.toStringAsPrecision(3)})rad}", textStyle: TextStyle(fontSize: 25),),),),
       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-        child:  Math.tex("${r' =\;'}${c.module.toStringAsPrecision(3)}${r'\angle'}${c.argument.toStringAsPrecision(3)}  " , textStyle:  TextStyle(fontSize: 25)),),),
+        child:  Math.tex("${r' =\;'}(${c.module.toStringAsPrecision(3)})${r'\angle'}(${c.argument.toStringAsPrecision(3)})rad  " , textStyle:  TextStyle(fontSize: 25)),),),
       ExpansionTile(title: Text("Details",style: TextStyle(fontSize: 20 , color: Colors.blue)),
           children: [
             recttopolar(a.re , a.im),

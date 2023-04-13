@@ -41,7 +41,7 @@ class rcswr extends StatelessWidget {
                 children: [
                   Text("Variables Values \n",style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline, ) ,  ),
                   rcMethod2var(variables),
-                  Text(" \n Result:  ${variables.rcvalue1.re.toStringAsPrecision(3)} + ${variables.rcvalue1.im.toStringAsPrecision(3)}j \n  "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
+                  Text(" \n Result:  (${variables.rcvalue1.re.toStringAsPrecision(3)}) + (${ variables.rcvalue1.im.toStringAsPrecision(3)})j \n  "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
                   ExpansionTile(
                     title: Text('More' , style: TextStyle(fontSize: 25),),
                     backgroundColor: Colors.grey[200],
@@ -61,7 +61,7 @@ class rcswr extends StatelessWidget {
                       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Math.tex("{${"|"}}${r'\Gamma_L'}{${"|"}}${r'\angle'}${r' \theta_o '} = |${r'\frac'}{${variables.SWR-1}}{${variables.SWR+1}}|${r'\angle'}${variables.thetaRo2.toStringAsPrecision(3)}rad ", textStyle: TextStyle(fontSize: 25 ,) ,  )),),
                       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("${r'\qquad \qquad = '}${variables.swrValue1.abs().toStringAsPrecision(3)}${r'\angle'}${variables.thetaRo2.toStringAsPrecision(3)}rad", textStyle: TextStyle(fontSize: 25 ,) ,  )),),
+                          child:  Math.tex("${r'\qquad \qquad = '}(${variables.swrValue1.abs().toStringAsPrecision(3)})${r'\angle'}(${variables.thetaRo2.toStringAsPrecision(3)})rad", textStyle: TextStyle(fontSize: 25 ,) ,  )),),
                       ExpansionTile(title: Text("Details",style: TextStyle(fontSize: 20 , color: Colors.blue)),
                           children: [ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Math.tex("${r' \theta_o '} = ${r' \theta_ '}${r' \Gamma '}{-2}${r'\beta'}{z} ", textStyle: TextStyle(fontSize: 25 ,) , )),),

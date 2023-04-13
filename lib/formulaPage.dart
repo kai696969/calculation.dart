@@ -20,15 +20,22 @@ class _formulaPageState extends State<formulaPage>
         title: Text('Formula Page'),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child:SingleChildScrollView(
-          scrollDirection: Axis.vertical,
+        body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+        padding:  EdgeInsets.only(left: 00.0, right: 00.0 , top: 00.0),
+        child:InteractiveViewer(
+        boundaryMargin: EdgeInsets.all(15.0),
+        minScale: 0.1,
+        maxScale: 2.0,
+        panEnabled: true,
+        scaleEnabled: true,
+        onInteractionEnd: (details) {
+        // do something when interaction ends, such as update a state variable
+        },
           child: Padding(
             padding:  EdgeInsets.only(left: 10.0, right: 10.0 , top: 30.0),
             child: Container(
-              height: 5000,
-              width: 500,
               child:  Column(
                 children:
                 [
@@ -47,7 +54,7 @@ class _formulaPageState extends State<formulaPage>
                   ExpansionTile(title: Math.tex("${r'Z : \;Z\;position\;(m)'} ", textStyle:TextStyle(fontSize: 25 ,  ),),
                     backgroundColor: Colors.grey[200],
                     children:[
-                      ListTile(title: Math.tex("${r'\Z  :\,-\ell < Z < 0'}", textStyle:TextStyle(fontSize: 25 ,  ),),),
+                      ListTile(title: Math.tex("${r'Z  :\,-\ell < Z < 0'}", textStyle:TextStyle(fontSize: 25 ,  ),),),
                     ],),
 
 
@@ -78,7 +85,7 @@ class _formulaPageState extends State<formulaPage>
 
 
                   SizedBox(height: 20),
-                  ExpansionTile(title: Math.tex("${r'\theta_o :'} ", textStyle:TextStyle(fontSize: 25 ,  fontWeight: FontWeight.bold),),
+                  ExpansionTile(title: Math.tex("${r'\theta_o : Phase\;Angle\;of\; \Gamma'} ", textStyle:TextStyle(fontSize: 25 ,  ),),
                     backgroundColor: Colors.grey[200],
                     children:[
                       ListTile(title: Math.tex(" ${r' \theta_o '}=${r' \theta_ '}${r' \Gamma '}{-2}${r'\beta'}{z}", textStyle:TextStyle(fontSize: 25 , ),),),
@@ -86,7 +93,7 @@ class _formulaPageState extends State<formulaPage>
 
 
                   SizedBox(height: 20),
-                  ExpansionTile(title: Math.tex(" ${r' \theta_ '}${r' \Gamma:'} ", textStyle:TextStyle(fontSize: 25 , ),),
+                  ExpansionTile(title: Math.tex(" ${r' \theta_ '}${r' \Gamma: Phase\;Angle\;of\; \Gamma(Z)'} ", textStyle:TextStyle(fontSize: 25 , ),),
                     backgroundColor: Colors.grey[200],
 
                     children:[
@@ -107,7 +114,7 @@ class _formulaPageState extends State<formulaPage>
                       ListTile( title: Math.tex("", textStyle: TextStyle(fontSize: 20 , color: Colors.red) ,  )),
                       ListTile( title: Math.tex("{${"|"}}${r'\Gamma_L'}{${"|"}}${r'\angle'}${r' \theta_o '} = ${r'\frac{1-SWR}{1+SWR}'}${r'\angle'}${r' \theta_o '}", textStyle: TextStyle(fontSize: 25 , ) ,  )),
                       ListTile( title: Math.tex("", textStyle: TextStyle(fontSize: 20 , color: Colors.red) ,  )),
-                      ListTile( title: Math.tex("${r'\Gamma_L'}{(z)} = ${r'\Gamma_L *'}e^{{j2}${ r'\beta '}z}", textStyle:  TextStyle(fontSize: 23 ,  ) ,  )),
+                      ListTile( title: Math.tex("${r'\Gamma'}{(z)} = ${r'\Gamma_L *'}e^{{j2}${ r'\beta '}z}", textStyle:  TextStyle(fontSize: 23 ,  ) ,  )),
                     ],),
 
 
@@ -115,29 +122,39 @@ class _formulaPageState extends State<formulaPage>
                   ExpansionTile(title: Math.tex("Input${r'\ \,'}Impedance${r'\ \,'}${r'Z_'}{in}(-${r'\ell'}) " , textStyle:  TextStyle(fontSize: 23 ,  fontWeight: FontWeight.bold),),
                     backgroundColor: Colors.grey[200],
                     children:[
-                      ListTile( title: Math.tex("${r'\Z_'}{in}(-${r'\ell'}) =${r'\frac{Z_L + jZ_otan(\beta \ell)}{Z_o + jZ_Ltan(\beta \ell)}'}${r' \Z_o \;\;\Omega'}", textStyle: TextStyle(fontSize: 25 ,) ,  )),
-                      ListTile( title: Math.tex("", textStyle: TextStyle(fontSize: 20 , color: Colors.red) ,  )),
-                      ListTile( title: Math.tex("${r'\Z_'}{in}(-${r'\ell'}) = ${r'\frac{1+ \Gamma_L e^{2j \beta z}}{1- \Gamma_L e^{2j \beta z}}'}${r' \Z_o \;\;\Omega'}", textStyle: TextStyle(fontSize: 25 , ) ,  )),
-                      ListTile( title: Math.tex("Z= ${r'\,'}-${r'\ell'} ", textStyle: TextStyle(fontSize: 20 , color: Colors.red , fontWeight: FontWeight.bold) ,  )),
-                      ListTile( title: Math.tex("${r'\tan(\beta \ell) \,in\,radians'} ", textStyle: TextStyle(fontSize: 20 , color: Colors.red , fontWeight: FontWeight.bold) ,  )),
+                      ListTile(title: FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
+                        child:  Math.tex("${r'Z_'}{in}(-${r'\ell'}) =${r'\frac{Z_L + jZ_otan(\beta \ell)}{Z_o + jZ_Ltan(\beta \ell)}'}${r'Z_o \;\;\Omega'}", textStyle: TextStyle(fontSize: 25 ,) ,  )),),
+                      Text("" , style: TextStyle(fontSize: 20),),
+                      ListTile(title: FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
+                        child:  Math.tex("${r'Z_'}{in}(-${r'\ell'}) = ${r'\frac{1+ \Gamma_L e^{2j \beta z}}{1- \Gamma_L e^{2j \beta z}}'}${r' \Z_o \;\;\Omega'}", textStyle: TextStyle(fontSize: 25 , ) ,  )),),
+                      ListTile(title: FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
+                        child:  Math.tex("Z= ${r'\,'}-${r'\ell'} ", textStyle: TextStyle(fontSize: 20 , color: Colors.red , fontWeight: FontWeight.bold) ,  )),),
+                      ListTile(title: FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
+                        child:  Math.tex("${r'\tan(\beta \ell) \,in\,radians'} ", textStyle: TextStyle(fontSize: 20 , color: Colors.red , fontWeight: FontWeight.bold) ,  )),),
                     ],),
 
                   SizedBox(height: 20),
                   ExpansionTile(title: Math.tex("Voltage${r'\;\;'}V(Z) " , textStyle:  TextStyle(fontSize: 23 ,  fontWeight: FontWeight.bold),),
                     backgroundColor: Colors.grey[200],
                     children:[
-                      ListTile( title: Math.tex("V(Z) = ${r'\ V_o^+'}${r'\,'}e^{-j${ r'\beta '}z} + ${r'\ V_o^-'}${r'\,'}e^{j${ r'\beta '}z} ", textStyle: TextStyle(fontSize: 25 ,) ,)),
-                      ListTile( title: Math.tex(" ${r'\quad'}${r'\quad'}${r'\quad'}= ${r'\ V_o^+'}${r'\,'}e^{-j${ r'\beta '}z}(1+ ${r'\Gamma_L'}e^{j2${ r'\beta '}z})${r'\ V'} ", textStyle: TextStyle(fontSize: 25 ,) ,)),
-                      ListTile( title: Math.tex("  ${r'\ V_o^+'}= Incident${r'\,'}Voltage  ", textStyle: TextStyle(fontSize: 20 , color: Colors.red , fontWeight: FontWeight.bold) ,)),
-                      ListTile( title: Math.tex("  ${r'\ V_o^-'}= Reflected${r'\,'}Voltage  ", textStyle: TextStyle(fontSize: 20 , color: Colors.red , fontWeight: FontWeight.bold) ,)),
+                      ListTile(title: FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
+                        child:  Math.tex("V(Z) = ${r'\ V_o^+'}${r'\,'}e^{-j${ r'\beta '}z} + ${r'\ V_o^-'}${r'\,'}e^{j${ r'\beta '}z} ", textStyle: TextStyle(fontSize: 25 ,) ,)),),
+                      ListTile(title: FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
+                        child:  Math.tex(" ${r'\quad'}${r'\quad'}${r'\quad'}= ${r'\ V_o^+'}${r'\,'}e^{-j${ r'\beta '}z}(1+ ${r'\Gamma_L'}e^{j2${ r'\beta '}z})${r'\ V'} ", textStyle: TextStyle(fontSize: 25 ,) ,)),),
+                      ListTile(title: FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
+                        child:  Math.tex("  ${r'\ V_o^+'}= Incident${r'\,'}Voltage  ", textStyle: TextStyle(fontSize: 20 , color: Colors.red , fontWeight: FontWeight.bold) ,)),),
+                      ListTile(title: FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
+                        child:  Math.tex("  ${r'\ V_o^-'}= Reflected${r'\,'}Voltage  ", textStyle: TextStyle(fontSize: 20 , color: Colors.red , fontWeight: FontWeight.bold) ,)),),
                     ],),
 
                   SizedBox(height: 20),
                   ExpansionTile(title: Math.tex(" Current${r'\;\;'}I(Z)  " , textStyle:  TextStyle(fontSize: 23 ,  fontWeight: FontWeight.bold),),
                     backgroundColor: Colors.grey[200],
                     children:[
-                      ListTile( title: Math.tex("I(Z) =${r'\frac {1}{Z_o}'}(${r'\ V_o^+'}${r'\,'}e^{-j${ r'\beta '}z} - ${r'\ V_o^-'}${r'\,'}e^{j${ r'\beta '}z})" , textStyle: TextStyle(fontSize: 25 ,) ,)),
-                      ListTile( title: Math.tex(" ${r'\quad'}${r'\quad'}${r'\quad'}= ${r'\frac {V_o^+}{Z_o}'}${r'\,'}e^{-j${ r'\beta '}z}(1- ${r'\Gamma_L'}e^{j2${ r'\beta '}z})${r'\ A'} ", textStyle: TextStyle(fontSize: 25 ,) ,)),
+                      ListTile(title: FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
+                        child:  Math.tex("I(Z) =${r'\frac {1}{Z_o}'}(${r'\ V_o^+'}${r'\,'}e^{-j${ r'\beta '}z} - ${r'\ V_o^-'}${r'\,'}e^{j${ r'\beta '}z})" , textStyle: TextStyle(fontSize: 25 ,) ,)),),
+                      ListTile(title: FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
+                        child:  Math.tex(" ${r'\quad'}${r'\quad'}${r'\quad'}= ${r'\frac {V_o^+}{Z_o}'}${r'\,'}e^{-j${ r'\beta '}z}(1- ${r'\Gamma_L'}e^{j2${ r'\beta '}z})${r'\ A'} ", textStyle: TextStyle(fontSize: 25 ,) ,)),),
 
                     ],),
 
@@ -161,28 +178,13 @@ class _formulaPageState extends State<formulaPage>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 ],
               ),
             ),
           ),
         ),
       ),
+        ),
     );
 
   }

@@ -39,16 +39,13 @@ zInPageBoth({required j ,required realZL ,  required imaginaryZL ,required realZ
           child: Padding(
             padding:  EdgeInsets.only(left: 10.0, right: 10.0 , top: 30.0),
             child: Container(
-              height: 5000,
-              width: 600,
               child:  Column(
                 children: [
                   Text("Variables Values \n",style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline, ) ,  ),
                   rcMethod1var(variables),
                   Text(" \n",style: TextStyle(fontSize: 10 ,  decoration: TextDecoration.underline, ) ,  ),
                   rcMethod2var(variables),
-                  Text("" ,  style: TextStyle(fontSize: 25) , ),
-                  Text(" \n Result: ${variables.zIn1.re.toStringAsPrecision(3)} + ${variables.zIn1.im.toStringAsPrecision(3)}j \n "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
+                  Text(" \n Result: (${variables.zIn1.re.toStringAsPrecision(3)}) + (${variables.zIn1.im.toStringAsPrecision(3)})j \n "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
                   zInAllinputs(variables)
                 ],
               ),

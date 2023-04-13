@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
-import 'package:fyp_v1/description.dart';
 import 'package:fyp_v1/variables.dart';
 
 
@@ -41,7 +40,7 @@ class powerPage1 extends StatelessWidget {
               child: Container(
                 child:  Column(
                   children: [
-                    Text("Result:  ${variables.powerr1.toStringAsPrecision(3)} \n   "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
+                    Text("Result:  ${variables.power1.toStringAsPrecision(3)} \n   "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
                     ExpansionTile(
                         title: Text('More',style:TextStyle(color: Colors.black ),),
                         backgroundColor: Colors.grey[200],
@@ -53,14 +52,9 @@ class powerPage1 extends StatelessWidget {
                           ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                               child:Math.tex("${r'\! P_L= \frac {1}{2}|\frac{V_g }{Z_g+ Z_{in}}|^2\;Re(Z_{in})'}",  textStyle: TextStyle(fontSize: 25 , ) ,  )),),
                           ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                              child:Math.tex("${r'\quad \;\; '}=${r'\frac{1}{2}'}|${r'\frac'}{${variables.Vg}}{${variables.Zg} + ${variables.zInusingRcz1.re.toStringAsPrecision(3)}}|^2* ${variables.zInusingRcz1.re.toStringAsPrecision(3)} ",  textStyle: TextStyle(fontSize: 25 , ) ,  )),),
+                              child:Math.tex("${r'\quad \;\; '}=${r'\frac{1}{2}'}|${r'\frac'}{${variables.Vg}}{${variables.Zg} + ${variables.zInusingRcz1.re.toStringAsPrecision(3)}}|^2* ${(variables.zInusingRcz1.re.toStringAsPrecision(3))}  ",  textStyle: TextStyle(fontSize: 25 , ) ,  )),),
                           ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                              child:Math.tex("${r'\quad \;\; '}=${variables.powerr1.toStringAsPrecision(3)}",  textStyle: TextStyle(fontSize: 25 , ) ,  )),)
-
-
-
-
-
+                              child:Math.tex("${r'\quad \;\; '}=${variables.power1.toStringAsPrecision(3)}",  textStyle: TextStyle(fontSize: 25 , ) ,  )),)
                         ]
                     ),
                   ],

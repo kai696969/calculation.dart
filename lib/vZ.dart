@@ -43,7 +43,7 @@ class vZ extends StatelessWidget {
     child: Container(
     child:  Column(
               children: [
-                Text("Result:  ${variables.vatzvalue1.re.toStringAsFixed(3)} + ${variables.vatzvalue1.im.toStringAsFixed(3)}j \n   "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
+                Text("Result:  (${variables.vatzvalue1.re.toStringAsFixed(3)}) + (${variables.vatzvalue1.im.toStringAsFixed(3)})j \n   "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
                 ExpansionTile(
                     title: Text('More',style:TextStyle(color: Colors.black ),),
                     backgroundColor: Colors.grey[200],
@@ -54,11 +54,11 @@ class vZ extends StatelessWidget {
                       ListTile(title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child: Text.rich(TextSpan(text: 'Step 1:   ', style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline,),),)),),
                       ListTile(title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child: Math.tex("${r'\ V_o ^ {+}'}= ${variables.voplus1.re.toStringAsPrecision(3)} + ${variables.voplus1.im.toStringAsPrecision(3)}j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
+                        child: Math.tex("${r'\ V_o ^ {+}'}= (${variables.voplus1.re.toStringAsPrecision(3)}) + (${variables.voplus1.im.toStringAsPrecision(3)})j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
                       ListTile(title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child: Math.tex("${r'\ e ^ {-j \beta z} '} = ${variables.jbetaZpos1.re.toStringAsFixed(3)} + ${variables.jbetaZpos1.im.toStringAsFixed(3)}j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
+                        child: Math.tex("${r'\ e ^ {-j \beta z} '} = (${variables.jbetaZpos1.re.toStringAsFixed(3)}) + (${variables.jbetaZpos1.im.toStringAsFixed(3)})j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
                       ListTile(title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child: Math.tex("${r'\ 1+ \Gamma_L e^{2j \beta z} '} = ${variables.zInusingRczTop1.re.toStringAsFixed(3)} + ${variables.zInusingRczTop1.im.toStringAsFixed(3)}j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
+                        child: Math.tex("${r'\ 1+ \Gamma_L e^{2j \beta z} '} = (${variables.zInusingRczTop1.re.toStringAsFixed(3)}) + (${variables.zInusingRczTop1.im.toStringAsFixed(3)})j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
                     ]
                 ),
               ],

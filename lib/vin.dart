@@ -44,7 +44,7 @@ class vin extends StatelessWidget {
             child: Container(
               child:  Column(
                 children: [
-                  Text("Result:  ${variables.Vin1.re.toStringAsPrecision(3)} + ${variables.Vin1.im.toStringAsPrecision(3)}j \n   "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
+                  Text("Result:  (${variables.Vin1.re.toStringAsPrecision(3)}) + (${variables.Vin1.im.toStringAsPrecision(3)})j \n   "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
                   Text("" ,  style: TextStyle(fontSize: 5) , ),
                   ExpansionTile(
                     title: Text('More',style:TextStyle(color: Colors.black ),),
@@ -56,11 +56,11 @@ class vin extends StatelessWidget {
                       ListTile(title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child: Text.rich(TextSpan(text: 'Step 1:   ', style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline,),),)),),
                       ListTile(title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child: Math.tex("${r'\ Z_{in} ='}${variables.zInusingRcz1.re.toStringAsPrecision(3)} + ${variables.zInusingRcz1.im.toStringAsPrecision(3)}j", textStyle: TextStyle(fontSize: 25 , ),)),),
+                        child: Math.tex("${r'\ Z_{in} ='}(${variables.zInusingRcz1.re.toStringAsPrecision(3)}) + (${variables.zInusingRcz1.im.toStringAsPrecision(3)})j", textStyle: TextStyle(fontSize: 25 , ),)),),
                       ListTile(title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child: Math.tex("${r'\ Z_{in} + Z_g ='}${variables.zInusingRcz1.re.toStringAsPrecision(3)} + ${variables.zInusingRcz1.im.toStringAsPrecision(3)}j + ${variables.Zg}", textStyle: TextStyle(fontSize: 22 , ),)),),
+                        child: Math.tex("${r'\ Z_{in} + Z_g ='}((${variables.zInusingRcz1.re.toStringAsPrecision(3)}) + (${variables.zInusingRcz1.im.toStringAsPrecision(3)})j) + (${variables.Zg})", textStyle: TextStyle(fontSize: 22 , ),)),),
                       ListTile(title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child: Math.tex("${r'\quad'}${r'\quad'} ${r'\quad'}${r'\quad'}= ${(variables.zInusingRcz1.re + variables.Zg).toStringAsPrecision(3)} + ${variables.zInusingRcz1.im.toStringAsPrecision(3)}j ", textStyle: TextStyle(fontSize: 25 , ),)),),
+                        child: Math.tex("${r'\quad'}${r'\quad'} ${r'\quad'}${r'\quad'}= (${(variables.zInusingRcz1.re + variables.Zg).toStringAsPrecision(3)})+ (${variables.zInusingRcz1.im.toStringAsPrecision(3)})j ", textStyle: TextStyle(fontSize: 25 , ),)),),
                       ListTile(title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child: Text.rich(TextSpan(text: 'Step 2:   ', style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline,),),)),),
                       ListTile( title: Math.tex("${r'\frac {Z_{in}}{Z_{in}+ Z_g}'}  ", textStyle: TextStyle(fontSize: 25 , ),  )),
@@ -70,9 +70,9 @@ class vin extends StatelessWidget {
                         child: Text.rich(TextSpan(text: 'Step 3:   ', style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline,),),)),),
                       ListTile( title: Math.tex("${r'\frac {Z_{in}}{Z_{in}+ Z_g}V_g'}  ", textStyle: TextStyle(fontSize: 25 , ),  )),
                       ListTile(title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child: Math.tex("${r' =\;'}  ${variables.ZgoverZinplusZg1.re.toStringAsPrecision(3)} + ${variables.Vin1.im.toStringAsPrecision(3)}j* ${variables.Vg}", textStyle: TextStyle(fontSize: 25 , ),)),),
+                        child: Math.tex("${r' =\;'}  ((${variables.ZgoverZinplusZg1.re.toStringAsPrecision(3)}) + (${variables.Vin1.im.toStringAsPrecision(3)})j)* (${variables.Vg})", textStyle: TextStyle(fontSize: 25 , ),)),),
                       ListTile(title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child: Math.tex("${r' =\;'}  ${variables.Vin1.re.toStringAsPrecision(3)} + ${variables.Vin1.im.toStringAsPrecision(3)}j", textStyle: TextStyle(fontSize: 25 , ),)),),
+                        child: Math.tex("${r' =\;'}  (${variables.Vin1.re.toStringAsPrecision(3)}) + (${variables.Vin1.im.toStringAsPrecision(3)})j", textStyle: TextStyle(fontSize: 25 , ),)),),
                     ],
                   ),
                 ],

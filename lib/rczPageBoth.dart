@@ -23,31 +23,29 @@ class rczPageBoth extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.yellow[800],
       ),
-    body: SingleChildScrollView(
-    scrollDirection: Axis.vertical,
+    body: InteractiveViewer(
+      boundaryMargin: EdgeInsets.all(15.0),
+      minScale: 0.1,
+      maxScale: 2.0,
+      panEnabled: true,
+      scaleEnabled: true,
+      onInteractionEnd: (details) {
+        // do something when interaction ends, such as update a state variable
+      },
     child: Padding(
     padding:  EdgeInsets.only(left: 00.0, right: 00.0 , top: 00.0),
-    child:InteractiveViewer(
-    boundaryMargin: EdgeInsets.all(15.0),
-    minScale: 0.1,
-    maxScale: 2.0,
-    panEnabled: true,
-    scaleEnabled: true,
-    onInteractionEnd: (details) {
-    // do something when interaction ends, such as update a state variable
-    },
+    child:SingleChildScrollView(
+    scrollDirection: Axis.vertical,
           child: Padding(
             padding:  EdgeInsets.only(left: 10.0, right: 10.0 , top: 30.0),
             child: Container(
-              height: 5000,
-              width: 500,
               child:  Column(
                 children: [
                   Text("Variables Values \n",style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline, ) ,  ),
                   rcMethod1var(variables),
                   Text(" \n",style: TextStyle(fontSize: 10 ,  decoration: TextDecoration.underline, ) ,  ),
                   rcMethod2var(variables),
-                  Text(" \n Result:  ${variables.rcAtz1.re.toStringAsPrecision(3)} + ${variables.rcAtz1.im.toStringAsPrecision(3)}j \n  "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
+                  Text(" \n Result: (${variables.rcAtz1.re.toStringAsPrecision(3)}) + (${variables.rcAtz1.im.toStringAsPrecision(3)})j \n  "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
                   ExpansionTile(
                     title: Text('More',style:TextStyle(color: Colors.black ),),
                     backgroundColor: Colors.grey[200],

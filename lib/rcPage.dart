@@ -36,13 +36,11 @@ class rcPage extends StatelessWidget {
           child: Padding(
             padding:  EdgeInsets.only(left: 30.0, right: 30.0 , top: 30.0),
             child: Container(
-              height: 5000,
-              width: 500,
               child: Column(
                 children: [
                   Text("Variables Values \n",style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline, ) ,  ),
-                  rcMethod1var(variables),
-                  Text(" \n Result:  ${variables.rcvalue1.re.toStringAsPrecision(3)} + ${variables.rcvalue1.im.toStringAsPrecision(3)}j \n  "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
+                  FittedBox(child:rcMethod1var(variables) ,),
+                  Text(" \n Result:  (${variables.rcvalue1.re.toStringAsPrecision(3)}) + (${ variables.rcvalue1.im.toStringAsPrecision(3)})j \n  "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
                   ExpansionTile(
                     title: Text('More' , style: TextStyle(fontSize: 25),),
                     backgroundColor: Colors.grey[200],
@@ -53,18 +51,18 @@ class rcPage extends StatelessWidget {
                       ListTile( title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Text.rich(TextSpan(text: 'Step 1:   ', style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline,),),)),),
                       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("${r'Z_L - Z_o= '}${variables.rctop1.re.toStringAsPrecision(3)} - ${variables.rctop1.im.toStringAsPrecision(3)}j " , textStyle:  TextStyle(fontSize: 25)),),),
+                        child:  Math.tex("${r'Z_L - Z_o= '}(${variables.rctop1.re.toStringAsPrecision(3)}) - (${variables.rctop1.im.toStringAsPrecision(3)})j " , textStyle:  TextStyle(fontSize: 25)),),),
                       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("${r'Z_L + Z_o= '}${variables.rcbtm1.re.toStringAsPrecision(3)} + ${variables.rcbtm1.im.toStringAsPrecision(3)}j " , textStyle:  TextStyle(fontSize: 25)),),),
+                        child:  Math.tex("${r'Z_L + Z_o= '}(${variables.rcbtm1.re.toStringAsPrecision(3)}) + (${variables.rcbtm1.im.toStringAsPrecision(3)})j " , textStyle:  TextStyle(fontSize: 25)),),),
                       ListTile( title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Text.rich(TextSpan(text: 'Step 2:   ', style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline,),),)),),
                       rcMethod1Step2(variables.rctop1 , variables.rcbtm1 , variables.rcvalue1),
                       ListTile( title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:  Text.rich(TextSpan(text: 'Step 3:   ', style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline,),),)),),
                       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex("${r'\Gamma_L  \;='} ${variables.rcvalue1.module.toStringAsPrecision(3)}${r'\angle'}${variables.rcvalue1.argument.toStringAsPrecision(3)}  " , textStyle:  TextStyle(fontSize: 25)),),),
+                        child:  Math.tex("${r'\Gamma_L  \;='} (${variables.rcvalue1.module.toStringAsPrecision(3)})${r'\angle'}(${variables.rcvalue1.argument.toStringAsPrecision(3)})rad  " , textStyle:  TextStyle(fontSize: 25)),),),
                       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:  Math.tex(" ${r'\quad \;\;\;='} ${ variables.rcvalue1.re.toStringAsPrecision(3)} + ${variables.rcvalue1.im.toStringAsPrecision(3)}j", textStyle: TextStyle(fontSize: 25) ,)),),
+                        child:  Math.tex(" ${r'\quad \;\;\;='} (${ variables.rcvalue1.re.toStringAsPrecision(3)}) + (${variables.rcvalue1.im.toStringAsPrecision(3)})j", textStyle: TextStyle(fontSize: 25) ,)),),
                       ExpansionTile(title: Text("Details",style: TextStyle(fontSize: 20 , color: Colors.blue)),
                           children: [
                             polartorect(variables.rcvalue1.module , variables.rcvalue1.argument )

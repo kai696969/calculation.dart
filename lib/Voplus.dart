@@ -43,11 +43,9 @@ class Voplus extends StatelessWidget {
           child: Padding(
             padding:  EdgeInsets.only(left: 10.0, right: 10.0 , top: 30.0),
             child: Container(
-              height: 5000,
-              width: 500,
               child:  Column(
                 children: [
-                  Text("Result:  ${variables.voplus1.re.toStringAsPrecision(3)} + ${variables.voplus1.im.toStringAsPrecision(3)}j \n   "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
+                  Text("Result:  (${variables.voplus1.re.toStringAsPrecision(3)}) + (${variables.voplus1.im.toStringAsPrecision(3)})j \n   "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
                   Text("" ,  style: TextStyle(fontSize: 5) , ),
                   ExpansionTile(
                       title: Text('More',style:TextStyle(color: Colors.black ),),
@@ -61,15 +59,15 @@ class Voplus extends StatelessWidget {
                         child:Math.tex("V(-${r'\ell'}) = ${r'\frac {Z_{in}}{Z_{in}+ Z_g}'}${r'\ V_g'}",  textStyle: TextStyle(fontSize: 18 , color: Colors.red , ),)),),
                         ListTile(title: Text.rich(TextSpan(text: 'Step 1:   ', style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline,),),)),
                       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:Math.tex("V(-${r'\ell'}) = ${variables.Vin1.re.toStringAsPrecision(3)} + ${variables.Vin1.im.toStringAsPrecision(3)}j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
+                        child:Math.tex("V(-${r'\ell'}) = (${variables.Vin1.re.toStringAsPrecision(3)}) + (${variables.Vin1.im.toStringAsPrecision(3)})j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
                       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:Math.tex("${r'\ e ^ {j \beta \ell} '} = ${variables.jbetaZpos1.re.toStringAsPrecision(3)} + ${variables.jbetaZpos1.im.toStringAsPrecision(3)}j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
+                        child:Math.tex("${r'\ e ^ {j \beta \ell} '} = (${variables.jbetaZpos1.re.toStringAsPrecision(3)}) + (${variables.jbetaZpos1.im.toStringAsPrecision(3)})j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
                       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:Math.tex("${r'\ 1+ \Gamma_L e^{2j \beta \ell} '} = ${variables.zInusingRczTop1.re.toStringAsPrecision(3)} + ${variables.zInusingRczTop1.im.toStringAsPrecision(3)}j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
+                        child:Math.tex("${r'\ 1+ \Gamma_L e^{2j \beta \ell} '} = (${variables.zInusingRczTop1.re.toStringAsPrecision(3)}) + (${variables.zInusingRczTop1.im.toStringAsPrecision(3)})j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
                       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
                         child:Math.tex("(${r'\ e ^ {j \beta \ell} '})*(${r'\ 1+ \Gamma_L e^{2j \beta \ell} '})",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
                       ListTile(  title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:Math.tex("=${(variables.jbetaZpos1*variables.zInusingRczTop1).re.toStringAsPrecision(3)}+${(variables.jbetaZpos1*variables.zInusingRczTop1).im.toStringAsPrecision(3)}j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
+                        child:Math.tex("=(${(variables.jbetaZpos1*variables.zInusingRczTop1).re.toStringAsPrecision(3)})+(${(variables.jbetaZpos1*variables.zInusingRczTop1).im.toStringAsPrecision(3)})j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
                         ExpansionTile(title: Text("Details ",style: TextStyle(fontSize: 20 ,color: Colors.blue)),
                             children: [
                               ListTile(title: Math.tex("${r'\ell'} = ${-variables.zPosition}",textStyle: TextStyle(fontSize: 25 , color: Colors.black , ))),

@@ -72,8 +72,8 @@ class Variables {
   double power = 0;
   double power1 =0;
   double powerr = 0;
-  double powerr1 =0;
-  TextEditingController reZL = TextEditingController(text: '');
+  double  powerr1 =0;
+  TextEditingController reZL = TextEditingController(text:'');
   TextEditingController imZL = TextEditingController(text: '');
   TextEditingController reZo = TextEditingController(text: '');
   TextEditingController imZo = TextEditingController(text: '');

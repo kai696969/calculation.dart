@@ -44,7 +44,7 @@ class Vominus extends StatelessWidget {
             child: Container(
               child:  Column(
                 children: [
-                  Text("Result:  ${variables.vominus1.re.toStringAsPrecision(3)} + ${variables.vominus1.im.toStringAsPrecision(3)}j \n   "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
+                  Text("Result:  (${variables.vominus1.re.toStringAsPrecision(3)}) + (${variables.vominus1.im.toStringAsPrecision(3)})j \n   "  , style: TextStyle(color: Colors.black , fontSize: 25, ) ),
                   ExpansionTile(
                       title: Text('More',style:TextStyle(color: Colors.black ),),
                       backgroundColor: Colors.grey[200],
@@ -54,11 +54,11 @@ class Vominus extends StatelessWidget {
                         child:Math.tex("${r'\ V_o^-'} = ${r'\ V_o^+'}*${r'\Gamma_L'}",  textStyle: TextStyle(fontSize: 25 , color: Colors.deepPurple , fontWeight: FontWeight.bold) ,  )),),
                         ListTile(title: Text.rich(TextSpan(text: 'Step 1:   ', style: TextStyle(fontSize: 25 ,  decoration: TextDecoration.underline,),),)),
                       ListTile(title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:Math.tex("${r'\ V_o^+'} = ${variables.voplus1.re.toStringAsPrecision(3)} + ${variables.voplus1.im.toStringAsPrecision(3)}j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
+                        child:Math.tex("${r'\ V_o^+'} = (${variables.voplus1.re.toStringAsPrecision(3)}) + (${variables.voplus1.im.toStringAsPrecision(3)})j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
                       ListTile( title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:Math.tex("${r'\; \Gamma_L'} = ${variables.rcvalue1.re.toStringAsPrecision(3)} + ${variables.rcvalue1.im.toStringAsPrecision(3)}j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
+                        child:Math.tex("${r'\; \Gamma_L'} = (${variables.rcvalue1.re.toStringAsPrecision(3)}) + (${variables.rcvalue1.im.toStringAsPrecision(3)})j",  textStyle: TextStyle(fontSize: 25 , color: Colors.black , ),)),),
                       ListTile(title:FittedBox(alignment: FractionalOffset.centerLeft, fit: BoxFit.scaleDown,
-                        child:Math.tex("${r'\ V_o^+'}*${r'\Gamma_L'} = ${variables.vominus1.re.toStringAsPrecision(3)} + ${variables.vominus1.im.toStringAsPrecision(3)}j ",  textStyle: TextStyle(fontSize: 25 , ) ,  )),),
+                        child:Math.tex("${r'\ V_o^+'}*${r'\Gamma_L'} = (${variables.vominus1.re.toStringAsPrecision(3)}) + (${variables.vominus1.im.toStringAsPrecision(3)})j ",  textStyle: TextStyle(fontSize: 25 , ) ,  )),),
                       ]
                   ),
                 ],
